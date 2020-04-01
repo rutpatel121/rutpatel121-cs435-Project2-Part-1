@@ -106,6 +106,7 @@ class GraphSearch():
 if __name__ == "__main__":
     linked_list = Graph()
     search = GraphSearch()
+    linked_list_10000 = Graph()
     #"""Creates n random nodes with randomly assigned unweighted, bidirectional edges."""
     def createRandomUnweightedGraphIter(n):
 
@@ -129,6 +130,16 @@ if __name__ == "__main__":
                 linked_list.addNode(i)
                 linked_list.addUndirectedEdge(i-1,i)
                 i=i+1
+
+
+    def createLinkedList_10000(n=10000):
+        if n > 0:
+            linked_list_10000.addNode(1)
+            i = 2
+            while i <= n:
+                linked_list_10000.addNode(i)
+                linked_list_10000.addUndirectedEdge(i - 1, i)
+                i = i + 1
     #"""Run a BFT recursively on a LinkedList"""
     def BFTRecLinkedList(link_list):
         return search.bftrec(link_list)
@@ -139,9 +150,11 @@ if __name__ == "__main__":
         return search.bftiter(link_list)
 
 
+    createLinkedList_10000()
     createRandomUnweightedGraphIter(10)
-    createLinkedList(10)
-
+    createLinkedList(20)
+    
+    print()
     print("*****************Graphs*****************")
     print ()
     print ("graph adjacency list------>",graph.graph_dict)
@@ -165,6 +178,8 @@ if __name__ == "__main__":
     print ()
     print ("BFTIter------>",search.bftiter(linked_list))
     print ()
-    print ("BFTRecLinkedList----->",BFTRecLinkedList(linked_list))
+    createLinkedList(10000)
+    print ("BFTIterLinkedList_10000----->",BFTIterLinkedList(linked_list_10000))
+    print()
+    print ("BFTRecLinkedList_10000----->",BFTRecLinkedList(linked_list))
     print ()
-    print ("BFTIterLinkedList----->",BFTIterLinkedList(linked_list))
